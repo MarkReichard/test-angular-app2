@@ -4,6 +4,10 @@ pipeline {
     environment {
         DOCKER_IMAGE = 'test-angular-app2'
     }
+    
+    tools { 
+        nodejs 'NodeJs2080' 
+    }
 
     stages {
         stage('Checkout Code') {
@@ -36,7 +40,7 @@ pipeline {
             steps {
                 // Push the Docker image to a registry (e.g., Docker Hub)
                 script {
-                    withCredentials([usernamePassword(credentialsId: 'dockerHubCredentials', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
+                    withCredentials([usernamePassword(credentialsId: 'dockerhubcredentials', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
                         sh "docker login -u $USERNAME -p $PASSWORD"
                         sh "docker push ${DOCKER_IMAGE}:$BUILD_NUMBER"
                     }
