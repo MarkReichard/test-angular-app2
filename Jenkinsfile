@@ -23,7 +23,7 @@ pipeline {
                 script {
                     sh 'npm install'
                     sh 'npm install --save-dev @angular/cli'
-                    sh './node_modules/.bin/ng build --prod'
+                    sh './node_modules/.bin/ng build'
                 }
             }
         }
