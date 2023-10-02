@@ -22,6 +22,7 @@ pipeline {
                 // Install dependencies and build the Angular app
                 script {
                     sh 'npm install'
+                    sh 'npm install --save-dev @angular/cli'
                     sh 'ng build --prod'
                 }
             }
